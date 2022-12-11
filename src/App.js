@@ -3,7 +3,7 @@ import { getForecast } from "./API/forecastApi";
 
 function App() {
     const [symbol, setSymbol] = useState("");
-    const [data, setData] = useState({});
+    const [data, setData] = useState(null);
 
     return (
         <div className="App">
@@ -11,7 +11,7 @@ function App() {
             <button onClick={async () => setData(await getForecast(symbol))}>
                 Построить график
             </button>
-            <div>{JSON.stringify(data.historicData)}</div>
+            <div>{data ? JSON.stringify(data.historicData) : "no data"}</div>
         </div>
     );
 }
